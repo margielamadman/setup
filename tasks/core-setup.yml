@@ -1,0 +1,23 @@
+- name: Install System Packages
+  apt:
+    pkg:
+    - software-properties-common
+    - curl
+    - git
+    - git-lfs
+    - wget
+    - build-essential
+    - python3-pip
+    - python3-setuptools
+    - tmux
+    - htop
+    - neofetch
+    - tldr
+    - mpv
+    - ffmpeg
+  become: true
+  tags: &core_tags [ 'install', 'core', 'dotfiles', 'vim' ]
+- name: Install python packages
+  pip:
+    name: yt-dlp
+  tags: *core_tags

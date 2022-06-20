@@ -1,0 +1,49 @@
+- name: Add neovim stable repository from PPA
+  ansible.builtin.apt_repository:
+    repo: ppa:neovim-ppa/stable
+  become: true
+  tags: &vim_tags [ 'install', 'vim', 'dotfiles' ]
+- name: Add neovim unstable repository from PPA
+  ansible.builtin.apt_repository:
+    repo: ppa:neovim-ppa/unstable
+  become: true
+  tags: *vim_tags
+- name: Update apt
+  apt:
+    update_cache: true
+  become: true
+  tags: *vim_tags
+- name: Install neovim
+  apt:
+    name: neovim
+  become: true
+  tags: *vim_tags
+- name: Make vim-plug directory
+  ansible.builtin.file:
+    path: ~/.local/share/nvim/site/autoload/
+    state: directory
+    mode: '0755'
+  tags: *vim_tags
+- name: Download vim-plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.local/share/nvim/site/autoload/plug.vim
+    mode: '0755'
+  tags: *vim_tags
+- name: Install Telescope Dependencies
+  apt:
+    pkg:
+    - fzf
+    - ripgrep
+    - fd-find
+  become: true
+  tags: *vim_tags
+- name: Install language servers (apt)
+  apt:
+    name: clangd
+  become: true
+  tags: *vim_tags
+- name: Install language servers (pip)
+  pip:
+    name: pyright
+  tags: *vim_tags
