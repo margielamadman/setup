@@ -1,0 +1,23 @@
+- name: Install pyenv and python build dependencies
+  community.general.homebrew:
+    name:
+    - pyenv
+    - openssl
+    - readline
+    - sqlite3
+    - xz
+    - zlib
+    - tcl-tk
+    state: present
+  tags: &python_tags [ 'install', 'python' ]
+- name: Check if python version installed
+  shell: pyenv versions | grep '{{ python_version }}'
+  register: version
+  tags: *python_tags
+- name: Install python
+  shell: pyenv install {{ python_version }}
+  when: version.rc != 0
+  tags: *python_tags
+- name: Set global python
+  shell: pyenv global {{ python_version }}
+  tags: *python_tags

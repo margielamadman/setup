@@ -1,6 +1,7 @@
 - name: Installing stow
   community.general.homebrew:
     name: stow
+    state: present
   tags: &dotfile_tags [ 'install', 'dotfiles' ]
 - name: Cloning .dotfiles
   ansible.builtin.git:

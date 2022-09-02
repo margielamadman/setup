@@ -16,4 +16,5 @@
     - fzf
     - ripgrep
     - fd
+    state: present
   tags: *vim_tags
