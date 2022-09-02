@@ -4,8 +4,8 @@
 Use tags by passing the `--tags` flag to `ansible-playbook`
 * `install` - everything
 * `core` - majority of system programs
-* `zsh` - install and setup zsh
-* `vim` - install and setup neovim
+* `zsh` - setup zsh
+* `vim` - setup neovim and plugin dependencies
 * `dotfiles` - get dotfiles
 
 ## After install
