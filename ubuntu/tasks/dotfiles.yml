@@ -17,5 +17,5 @@
     state: absent
   tags: *dotfile_tags
 - name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && ./ubuntu.sh
+  shell: cd $HOME/.dotfiles && ./run.sh
   tags: *dotfile_tags

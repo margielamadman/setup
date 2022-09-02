@@ -1,8 +1,7 @@
 - name: Installing stow
-  apt:
+  community.general.homebrew:
     name: stow
-  become: true
-  tags: &dotfile_tags [ 'install', 'vim', 'dotfiles', 'zsh' ]
+  tags: &dotfile_tags [ 'install', 'dotfiles' ]
 - name: Cloning .dotfiles
   ansible.builtin.git:
     repo: 'https://github.com/margielamadman/dotfiles.git'
@@ -17,5 +16,5 @@
     state: absent
   tags: *dotfile_tags
 - name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && ./ubuntu.sh
+  shell: cd $HOME/.dotfiles && ./run.sh
   tags: *dotfile_tags
