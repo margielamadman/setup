@@ -1,0 +1,21 @@
+- name: Installing stow
+  apt:
+    name: stow
+  become: true
+  tags: &dotfile_tags [ 'install', 'vim', 'dotfiles', 'zsh' ]
+- name: Cloning .dotfiles
+  ansible.builtin.git:
+    repo: 'https://github.com/margielamadman/dotfiles.git'
+    dest: "~/.dotfiles"
+  tags: *dotfile_tags
+- name: Change repo remote
+  shell: cd $HOME/.dotfiles && git remote set-url origin "git@github.com:margielamadman/dotfiles.git"
+  tags: *dotfile_tags
+- name: Remove .zshrc so we can link
+  ansible.builtin.file:
+    path: ~/.zshrc
+    state: absent
+  tags: *dotfile_tags
+- name: Stow dotfiles
+  shell: cd $HOME/.dotfiles && ./ubuntu.sh
+  tags: *dotfile_tags

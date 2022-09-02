@@ -1,0 +1,23 @@
+- hosts: localhost
+  pre_tasks:
+  - name: Update apt
+    become: true
+    apt:
+      update_cache: true
+    tags:
+      - install
+      - core
+      - zsh
+      - vim
+      - dotfiles
+      - brave
+      - spotify
+      - pass
+  tasks:
+    - import_tasks: tasks/core-setup.yml
+    - import_tasks: tasks/zsh-setup.yml
+    - import_tasks: tasks/nvim-setup.yml
+    - import_tasks: tasks/dotfiles.yml
+    - import_tasks: tasks/brave.yml
+    - import_tasks: tasks/spotify.yml
+    - import_tasks: tasks/pass.yml
