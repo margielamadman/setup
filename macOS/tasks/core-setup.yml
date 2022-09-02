@@ -1,23 +1,26 @@
 - name: Install System Packages
-  apt:
-    pkg:
-    - software-properties-common
-    - curl
+  community.general.homebrew:
+    name:
     - git
     - git-lfs
     - wget
-    - build-essential
-    - python3-pip
-    - python3-setuptools
+    - httpie
+    - jq
     - tmux
+    - neovim
     - htop
     - neofetch
     - tldr
     - mpv
     - ffmpeg
-  become: true
-  tags: &core_tags [ 'install', 'core', 'dotfiles', 'vim' ]
-- name: Install python packages
-  pip:
-    name: yt-dlp
+    - imagemagick
+    - yt-dlp
+    state: present
+  tags: &core_tags [ 'install', 'core' ]
+- name: Install Casks
+  community.general.homebrew_cask:
+    name:
+    - iterm2
+    - visual-studio-code
+    state: present
   tags: *core_tags
