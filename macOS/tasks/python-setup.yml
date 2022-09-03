@@ -21,3 +21,10 @@
 - name: Set global python
   shell: pyenv global {{ python_version }}
   tags: *python_tags
+- name: Install python language server
+  community.general.npm:
+    name: pyright
+    global: yes
+    state: present
+  become: true
+  tags: *python_tags
