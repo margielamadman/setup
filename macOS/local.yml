@@ -11,9 +11,11 @@
       - vim
       - dotfiles
       - python
+      - node
   tasks:
     - import_tasks: tasks/core-setup.yml
     - import_tasks: tasks/zsh-setup.yml
     - import_tasks: tasks/nvim-setup.yml
     - import_tasks: tasks/dotfiles.yml
+    - import_tasks: tasks/node-setup.yml
     - import_tasks: tasks/python-setup.yml

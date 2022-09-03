@@ -1,0 +1,14 @@
+- name: Install n node version manager
+  community.general.homebrew:
+    name:
+    - n
+    state: present
+  tags: &node_tags [ 'install', 'node' ]
+- name: Install latest node lts version
+  shell: n lts
+  become: true
+  tags: *node_tags
+- name: Install yarn
+  shell: corepack enable
+  tags: *node_tags
+  become: true
