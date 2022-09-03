@@ -7,6 +7,8 @@ Use tags by passing the `--tags` flag to `ansible-playbook`
 * `zsh` - setup zsh
 * `vim` - setup neovim and plugin dependencies
 * `dotfiles` - get dotfiles
+* `node` - setup node
+* `python` - setup python
 
 ## After install
 * Run `:PlugInstall` to install neovim plugins
