@@ -12,3 +12,17 @@
   shell: corepack enable
   tags: *node_tags
   become: true
+- name: Install typescript
+  community.general.npm:
+    name: typescript
+    global: yes
+    state: present
+  become: true
+  tags: *node_tags
+- name: Install typescript language server
+  community.general.npm:
+    name: typescript-language-server
+    global: yes
+    state: present
+  become: true
+  tags: *node_tags
