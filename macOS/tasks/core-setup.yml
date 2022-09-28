@@ -1,3 +1,7 @@
+- name: Add tap for fonts
+  community.general.homebrew_tap:
+    name: homebrew/cask-fonts
+  tags: &core_tags [ 'install', 'core' ]
 - name: Install System Packages
   community.general.homebrew:
     name:
@@ -11,16 +15,16 @@
     - htop
     - neofetch
     - tldr
-    - mpv
     - ffmpeg
     - imagemagick
     - yt-dlp
     state: present
-  tags: &core_tags [ 'install', 'core' ]
+  tags: *core_tags
 - name: Install Casks
   community.general.homebrew_cask:
     name:
     - iterm2
-    - visual-studio-code
+    - mpv
+    - font-caskaydia-cove-nerd-font
     state: present
   tags: *core_tags

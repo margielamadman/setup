@@ -7,12 +7,12 @@
   - Test changes with a [UTM](https://mac.getutm.app/) virtual machine.
   - Install Xcode command line tools to get python and git
   - Install Homebrew
-* Install ansible using pip
-  - Upgrade pip
-  - Add ansible binary to your PATH
+* Install ansible
+  - Install using homebrew on mac
+  - Install using pip on Linux
 * Set up ssh
 * Download this repo
 
-## Run ansible
+## Run ansible from within the OS folder
 `ansible-playbook local.yml -K --tags <tags>`
 
